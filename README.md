@@ -40,3 +40,19 @@ CREATE TRIGGER tbl_name_watch_trigger AFTER INSERT ON tbl_name
 FOR EACH ROW EXECUTE PROCEDURE tbl_name_notify_trigger();
 ```
 
+## Application Configuration
+
+### Database Connection
+
+### Configure Watch Tables
+
+### Configure ObjectID Mapping Table
+
+## Running
+
+`npm start`
+
+## Testing
+
+`npm test`
+
