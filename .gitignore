@@ -1,0 +1,8 @@
+.DS_Store
+.vagrant/
+src/
+.ssh
+*.swp
+*.swo
+node_modules
+config/mongodb-auth.txt
