@@ -1,0 +1,19 @@
+{
+  "name": "node-postgres-objectid",
+  "version": "0.0.1",
+  "private": true,
+  "repository": "git@github.com:Turistforeningen/node-postgres-objectid.git",
+  "dependencies": {
+    "pg": "~2.6",
+    "coffee-script": "~1.6",
+    "pm2": "~0.5.6",
+    "mongodb": "~1.2"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.1"
+  },
+  "scripts": {
+    "start": "MODE=prod PORT=4000 coffee coffee/server.coffee",
+    "test": "MODE=test mocha -b -c --check-leaks test/suit.coffee -R progress -r coffee-script"
+  }
+}
