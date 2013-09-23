@@ -1,7 +1,7 @@
-Add MongoDB ObjectID to rows in Postgres
-========================================
+ObjectID for Postgres rows
+==========================
 
-## Postgres Trigger Functions
+## Postgres Setup 
 
 Remember to alter all instances of `tbl_name` and `tbl_id` accordingly.
 
