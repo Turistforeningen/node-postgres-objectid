@@ -3,9 +3,10 @@ Add MongoDB ObjectID to rows in Postgres
 
 ## Postgres Trigger Functions
 
-### Functon Definition
+Remember to alter all instances of `tbl_name` and `tbl_id` accordingly.
 
-Remember to alter `tbl_name` and `tbl_id` accordingly.
+### Create Postgres Functon Definition
+
 
 ```plpgsql
 CREATE OR REPLACE FUNCTION tbl_name_notify_trigger() RETURNS trigger AS $$
@@ -17,7 +18,7 @@ END;
 $$ LANGUAGE plpgsql;
 ```
 
-### Add as Trigger
+### Add Functon as Trigger
 
 ```plpgsql
 CREATE TRIGGER tbl_name_watch_trigger AFTER INSERT ON tbl_name
