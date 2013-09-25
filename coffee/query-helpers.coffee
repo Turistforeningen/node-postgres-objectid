@@ -70,9 +70,9 @@ insertOidsForTable = (client, insert, oid, cb) ->
 insertOIDsForTables = (client, from, oid, cb, i) ->
   i = i or 0
   
-  return cb null, i if i is from.length
-
-  console.log "\nMaking ObjectIDs for table #{from[i].table}"
+  if i is from.length
+    cb null, i if typeof cb is 'function'
+    return
 
   insert = []
   count = 0
@@ -98,7 +98,7 @@ insertOIDsForTables = (client, from, oid, cb, i) ->
   query.on 'end', (result) ->
     count += insert.length
     insertOidsForTable client, insert, oid, (err, rowCount) ->
-      console.log "#{count} OIDs inserted for table #{from[i].table}"
+      console.log "#{count} OIDs inserted for table #{from[i].table}" if rowCount > 0
       insertOIDsForTables client, from, oid, cb, ++i
 
 module.exports =
