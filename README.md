@@ -18,16 +18,13 @@ rconfigured tables have ObjectIDs even if the script stops for a while.
 
 ## Postgres Setup 
 
-Remember to alter all instances of `tbl_name*` and `tbl_id` according to your
-database setup.
-
 ### Postgres Functon Definition
 
 ```plpgsql
-CREATE OR REPLACE FUNCTION tbl_name_notify_trigger() RETURNS trigger AS $$
+CREATE OR REPLACE FUNCTION objectid_notify() RETURNS trigger AS $$
 DECLARE
 BEGIN
-  PERFORM pg_notify('watchers', TG_TABLE_NAME || ',tbl_id,' || NEW.tbl_id );
+  NOTIFY objectid_watch;
   RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
@@ -35,9 +32,11 @@ $$ LANGUAGE plpgsql;
 
 ### Add Functon as Trigger
 
+Remember to change `tbl_name` accordning to your database.
+
 ```plpgsql
-CREATE TRIGGER tbl_name_watch_trigger AFTER INSERT ON tbl_name
-FOR EACH ROW EXECUTE PROCEDURE tbl_name_notify_trigger();
+CREATE TRIGGER objectid_watcher AFTER INSERT ON tbl_name
+FOR EACH ROW EXECUTE PROCEDURE objectid_notify();
 ```
 
 ## Application Configuration
