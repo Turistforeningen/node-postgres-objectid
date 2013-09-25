@@ -6,7 +6,7 @@ config = require './config'
 ObjectID = require('mongodb').ObjectID
 
 pg.connect config.conString, (err, client) ->
-  return console.err err if err
+  return console.error err if err
 
   helpers.insertOIDsForTables client, config.from, config.oid, (err, data) ->
     return console.log err if err
