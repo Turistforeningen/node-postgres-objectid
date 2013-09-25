@@ -14,7 +14,7 @@ pg.connect config.conString, (err, client) ->
   #query = client.query("LISTEN watchers")
 
 
-  helpers.makeOidForTables client, config.from, config.oid, (err, data) ->
+  helpers.insertOIDsForTables client, config.from, config.oid, (err, data) ->
     console.log err, data
     client.end ->
       console.log 'client.end'
