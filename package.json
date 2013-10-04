@@ -13,7 +13,7 @@
     "mocha": "~1.12.1"
   },
   "scripts": {
-    "start": "MODE=prod PORT=4000 coffee coffee/server.coffee",
-    "test": "MODE=test mocha -b -c --check-leaks test/suit.coffee -R progress -r coffee-script"
+    "start": "coffee coffee/server.coffee",
+    "test": "mocha -b -c --check-leaks test/suit.coffee -R progress -r coffee-script"
   }
 }
