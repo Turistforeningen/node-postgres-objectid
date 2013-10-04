@@ -3,7 +3,6 @@
 pg = require 'pg'
 helpers = require './query-helpers'
 config = require './config'
-ObjectID = require('mongodb').ObjectID
 
 pg.connect config.conString, (err, client) ->
   return console.error err if err
