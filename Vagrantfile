@@ -15,7 +15,16 @@ apt-get install -y build-essential git curl libpq-dev autossh postgresql
 
 # Install databse
 echo "Setting up Postgres database"
+cd /etc/postgresql/9.1/main/
+sudo -u postgres chmod 666 pg_hba.conf
+sudo -u postgres echo '' > pg_hba.conf
+sudo -u postgres echo 'local   all             postgres                                trust' >> pg_hba.conf
+sudo -u postgres echo 'local   all             all                                     trust' >> pg_hba.conf
+sudo -u postgres echo 'host    all             all             127.0.0.1/32            trust' >> pg_hba.conf
+sudo -u postgres echo 'host    all             all             ::1/128                 trust' >> pg_hba.conf
+service postgresql restart
 sh /vagrant/scripts/pg-init.sh
+cd /vagrant
 
 # NodeJS via NVM
 echo "Installing NVM..."
