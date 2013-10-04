@@ -11,11 +11,11 @@ sudo -u vagrant cp /vagrant/.ssh/* /home/vagrant/.ssh/.
 # Update & Install
 echo "Updating and installing packages"
 apt-get update
-apt-get install -y build-essential git curl libpq-dev autossh
+apt-get install -y build-essential git curl libpq-dev autossh postgresql
 
-# Copy production DB
-echo "Conecting to remote database..."
-sudo -u vagrant autossh -f -L 5432:localhost:5432 -CN sherpa2
+# Install databse
+echo "Setting up Postgres database"
+sh /vagrant/scripts/pg-init.sh
 
 # NodeJS via NVM
 echo "Installing NVM..."
@@ -33,15 +33,6 @@ echo "Installing NPM packages..."
 echo "PATH=$PATH:/vagrant/node_modules/.bin" >> /home/vagrant/.bashrc
 PATH=$PATH:/vagrant/node_modules/.bin
 cd /vagrant/ && npm install
-
-# Install localtunnel
-# npm install -g localtunnel
-
-# Auto SSH
-# echo "Setting up remote ports..."
-# sudo -u vagrant autossh -f -L 27017:localhost:27017 -CN sherpa2
-# sudo -u vagrant autossh -f -L 27018:localhost:27018 -CN sherpa2
-# sudo -u vagrant autossh -f -L 27019:localhost:27019 -CN sherpa2
 
 SCRIPT
 
