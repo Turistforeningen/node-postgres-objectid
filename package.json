@@ -14,6 +14,6 @@
   },
   "scripts": {
     "start": "coffee coffee/server.coffee",
-    "test": "mocha -b -c --check-leaks test/suit.coffee -R progress -r coffee-script"
+    "test": "mocha -b -c --check-leaks test/suite.coffee -R spec -r coffee-script"
   }
 }
