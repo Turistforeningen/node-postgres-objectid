@@ -3,20 +3,22 @@ ObjectID for Postgres
 
 [![Build Status](https://drone.io/github.com/Turistforeningen/node-postgres-objectid/status.png)](https://drone.io/github.com/Turistforeningen/node-postgres-objectid/latest)
 
-So, we are in the progress of migrating some our our data from out primary
-Postgres database over to our new MongoDB database. Since we have a lot of
-smaller legacy systems, and one very big one, we would need to keep the two
-databses in sync for a while. Since almost all tables had some kind of
-refference to another table we needed to make a mapping between the incremental
-Postgres-ID and the new MongoDB ObjectId. 
+So, we are in the process of migrating some our hiking data from out primary
+Postgres database over to a new MongoDB database. Since we have a lot of smaller
+legacy systems, and one very big one, we would need to keep the two databses in
+sync for a while. Since almost all tables had some kind of refference to another
+table we needed to make a mapping between the incremental Postgres-ID and the
+new MongoDB ObjectId to facilitate for easy update. 
 
 Here comes our little NodeJS background task to the rescue! It listens for new
-rows in the Postgres table and generates a unique ObjectID which is inserted
-into a mapping table for later refference.
+rows in the Postgres database, using the trigger/listen feature build right into
+Postgres, and generates a unique ObjectID which is inserted into a mapping table
+for later refference.
 
-The program will walk through all of the configured tables and create ObjectIDs
-for them before it starts listening for new rows. This ensures that all of you
-rconfigured tables have ObjectIDs even if the script stops for a while.
+The program will go through all of the configured tables and create ObjectIDs
+for all rows without before it starts to listen for new rows. This ensures that
+all of your configured tables have an ObjectID even if the script stops for a
+little while.
 
 ## Postgres Setup 
 
@@ -74,13 +76,17 @@ exports.from = [
 exports.oid = {table: 'objectid', colType: 'type', colId: 'id', colOid: 'oid'}
 ```
 
-## Running
-
-`npm start`
-
 ## Testing
 
-`npm test`
+```shell
+npm test
+```
+
+## Running
+
+```shell
+pm2 start .pm2-processes.json
+```
 
 ## License
 
