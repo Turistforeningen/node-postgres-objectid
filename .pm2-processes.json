@@ -1,1 +1,1 @@
-{"script":"coffee/server.coffee","name":"pg-oid","fileError":"err.log","fileOutput":"out.log"}
+{  "script": "coffee/server.coffee"  ,"name": "pg-oid"  ,"fileError": "err.log"  ,"fileOutput": "out.log"  ,"max_restarts": "400"}
