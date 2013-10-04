@@ -1,6 +1,8 @@
 ObjectID for Postgres
 =====================
 
+[![Build Status](https://drone.io/github.com/Turistforeningen/node-postgres-objectid/status.png)](https://drone.io/github.com/Turistforeningen/node-postgres-objectid/latest)
+
 So, we are in the progress of migrating some our our data from out primary
 Postgres database over to our new MongoDB database. Since we have a lot of
 smaller legacy systems, and one very big one, we would need to keep the two
