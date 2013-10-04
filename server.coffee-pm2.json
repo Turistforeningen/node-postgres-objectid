@@ -1,1 +1,0 @@
-{  "script": "coffee/server.coffee"  ,"name": "pg-oid"  ,"fileError": "err.log"  ,"fileOutput": "out.log"  ,"cron_restart": "1 0 * * *"}
