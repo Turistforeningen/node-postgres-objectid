@@ -1,4 +1,4 @@
-exports.conString = 'postgres://postgres:@localhost:5432/test'
+exports.conString = 'postgres://postgres:1234@localhost:5432/test'
 exports.from = [
   {table: 'calendar', type: 'C', colId: 'id'}
   {table: 'calendar_entry', type: 'E', colId: 'id'}
