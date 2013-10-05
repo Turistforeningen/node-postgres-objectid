@@ -104,4 +104,6 @@ insertOIDsForTables = (client, from, oid, cb, i) ->
 module.exports =
   insertOIDsForTables: insertOIDsForTables
   insertOidsForTable: insertOidsForTable
+  _getSqlQueryForRowsWithoutOID: _getSqlQueryForRowsWithoutOID
+  _getSqlQueryForInsertOID: _getSqlQueryForInsertOID
 
