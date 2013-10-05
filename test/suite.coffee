@@ -33,6 +33,15 @@ beforeEach (done) ->
       done()
 
 describe 'query-helpers', ->
+  describe '#_getSqlQueryForRowsWithoutOID()', ->
+    it 'should return correct sql query for given table', (done) ->
+      sql = helpers._getSqlQueryForRowsWithoutOID config.from[1], config.oid
+      
+      client.query sql, (err, data) ->
+        throw err if err
+        assert.equal data.rows.length, 5
+        done()
+  
   describe '#insertOIDsForTables()', ->
     it 'should insert ObjectIDs for all rows without ObjectIDs', (done) ->
       helpers.insertOIDsForTables client, config.from, config.oid, (err, data) ->
